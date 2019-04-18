@@ -4,8 +4,10 @@ var mongoose = require('mongoose');
 var bookCtrl = require('./controllers/book.ctrl');
 var bookRouter = require('./routers/book.router');
 var bodyParser = require('body-parser');
+const cors = require("cors");   
 
 var app = express();
+app.use(cors());
 var port = process.env.PORT|| 3000;
 app.use(bodyParser.json());
 app.listen(port,function(){
