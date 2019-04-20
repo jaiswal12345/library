@@ -1,5 +1,6 @@
 var Book = require('../models/book.model');
 function BookCtrl() {
+    //list with filters
     this.get = function (req, res) {
         var filter = {};
         if (req.query.name){
@@ -16,7 +17,7 @@ function BookCtrl() {
         var pageIndex = +req.params.pageIndex || 0;
         //deferred execution:
         var query = Book.find(filter).skip(pageIndex * pageSize).limit(pageSize);
-        console.log(query);
+
         var count;
         Book.count(filter).exec()
             .then(function (result) {
@@ -63,7 +64,7 @@ function BookCtrl() {
             }
         });
     };
-
+    //update
     this.put = function (req, res) {
         var id = req.params.id;
         Book.findByIdAndUpdate(id, req.body, function (err, result) {
