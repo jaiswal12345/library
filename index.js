@@ -29,5 +29,5 @@ function authentication(req,res,next){
     });
 }
 app.use('/api/users',userRouter);
-//app.use(authentication);
+app.use(authentication);
 app.use('/api/books',bookRouter);
